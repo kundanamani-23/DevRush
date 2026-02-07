@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DevRush</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- JOIN NOW OVERLAY -->
+<div class="overlay" id="overlay">
+
+    <!-- Preparing Screen -->
+    <div class="modal" id="preparing">
+        <div class="spinner"></div>
+        <h3>Preparing Your Challenge</h3>
+        <p>You will be redirected in <span id="count">5</span> seconds</p>
+        <button class="link-btn" onclick="showUnlocked()">Skip & Continue</button>
+    </div>
+
+    <!-- Unlocked Screen -->
+    <div class="modal hidden" id="unlocked">
+        <h3>Challenge unlocked 🚀</h3>
+        <p>Your timer starts now. Good luck!</p>
+    </div>
+
+</div>
+
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="top-center">
+        DevRush Build. Fix. Escape.
+    </div>
+    <button class="join-btn">Join Now</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-card">
+        <h1>Build Under Pressure</h1>
+        <p>Speed, precision, and creativity decide the winner.</p>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div>
+        <h2>15+</h2>
+        <span>Minutes</span>
+    </div>
+    <div>
+        <h2>30</h2>
+        <span>Points</span>
+    </div>
+    <div>
+        <h2>1</h2>
+        <span>Winner</span>
+    </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+    <div class="pill">
+        <h3>Precision</h3>
+        <p>Exact spacing and alignment.</p>
+    </div>
+
+    <div class="pill active">
+        <h3>Speed</h3>
+        <p>Time works against you.</p>
+    </div>
+
+    <div class="pill">
+        <h3>Focus</h3>
+        <p>No distractions allowed.</p>
+    </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules">
+    <h2>Challenge Modules</h2>
+
+    <div class="module-grid">
+        <div class="module">Layout Replication</div>
+        <div class="module">CSS Styling</div>
+        <div class="module active">Glass UI</div>
+        <div class="module">Color Theory</div>
+        <div class="module">Spacing Logic</div>
+        <div class="module">Time Control</div>
+    </div>
+</section>
+
+<footer>
+    © DevK²
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
