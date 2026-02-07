@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Dashboard | GDGoC</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #020617, #0f172a);
+      color: #e5e7eb;
+      padding: 2rem;
+    }
+    h1 { color: #2563eb; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: rgba(2,6,23,0.85);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    header {
+      display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;
+    }
+    .logout-btn { background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent, #e5e7eb);padding:0.6rem 0.9rem;border-radius:999px;cursor:pointer }
+    .speaker-card { display:flex;gap:1rem;align-items:center }
+    .speaker-card img { width:64px;height:64px;border-radius:12px;object-fit:cover }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="title"></h1>
+  <div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<h2>📅 Schedule</h2>
+<div class="grid" id="schedule"></div>
+
+<h2>🎤 Speakers</h2>
+<div class="grid" id="speakers"></div>
+
+<script>
+  const track = localStorage.getItem("track");
+
+  const data = {
+    webops: {
+      title: "WebOps Track Dashboard",
+      schedule: [
+        "HTML & CSS Deep Dive",
+        "JavaScript in Production",
+        "Web Performance Optimization"
+      ],
+      speakers: [
+        { name: "Ananya", role: "Frontend Engineer", img: "https://randomuser.me/api/portraits/women/44.jpg" },
+        { name: "Rahul", role: "UI/UX Specialist", img: "https://randomuser.me/api/portraits/men/46.jpg" },
+        { name: "Sneha", role: "Web Architect", img: "https://randomuser.me/api/portraits/women/68.jpg" }
+      ]
+    },
+    devops: {
+      title: "DevOps Track Dashboard",
+      schedule: [
+        "Linux & Shell Scripting",
+        "Docker & Kubernetes",
+        "CI/CD Pipelines"
+      ],
+      speakers: [
+        { name: "Amit", role: "DevOps Engineer", img: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { name: "Kiran", role: "Cloud Architect", img: "https://randomuser.me/api/portraits/men/52.jpg" },
+        { name: "Neha", role: "SRE Specialist", img: "https://randomuser.me/api/portraits/women/55.jpg" }
+      ]
+    }
+  };
+
+  if (!track || !data[track]) {
+    alert("Invalid access. Please login again.");
+    window.location.href = "login.html";
+  }
+
+  document.getElementById("title").innerText = data[track].title;
+
+  const scheduleEl = document.getElementById("schedule");
+  data[track].schedule.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.textContent = item;
+    scheduleEl.appendChild(card);
+  });
+
+  const speakersEl = document.getElementById("speakers");
+  data[track].speakers.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'card speaker-card';
+    card.innerHTML = `<img src="${s.img}" alt="${s.name}"><div><strong>${s.name}</strong><br><small>${s.role}</small></div>`;
+    speakersEl.appendChild(card);
+  });
+
+  function logout() {
+    localStorage.removeItem('track');
+    window.location.href = 'index.html';
+  }
+
+  // expose logout to global scope
+  window.logout = logout;
+</script>
+
+</body>
+</html>

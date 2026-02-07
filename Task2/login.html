@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | GDGoC Event</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #22c55e;
+      --bg: #0f172a;
+      --card: #020617;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #020617, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+    .login-card {
+      background: rgba(2,6,23,0.85);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .extra {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .extra a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2>Login</h2>
+    <label for="email" style="display:none">Email</label>
+    <input id="email" type="email" placeholder="Email" required />
+    <label for="password" style="display:none">Password</label>
+    <input id="password" type="password" placeholder="Password" required />
+
+    <label for="track" style="display:block;margin-bottom:6px;color:var(--muted)">Choose Track</label>
+    <select id="track" required
+      style="width:100%;padding:0.8rem;margin-bottom:1rem;border-radius:0.5rem;">
+      <option value="">Select Track</option>
+      <option value="webops">WebOps</option>
+      <option value="devops">DevOps</option>
+    </select>
+
+    <button type="button" onclick="login()">Login</button>
+
+    <div class="extra">
+      New user? <a href="#">Register here</a>
+    </div>
+  </div>
+<script>
+  function login() {
+    const track = document.getElementById("track").value;
+
+    if (!track) {
+      alert("Please select a track");
+      return;
+    }
+
+    localStorage.setItem("track", track);
+    window.location.href = "dashboard.html";
+  }
+</script>
+
+</body>
+</html>
